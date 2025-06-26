@@ -1,0 +1,53 @@
+MDScreen:
+    md_bg_color: app.cores['fundo']
+    MDGridLayout:         # define uma coluna só pros elementos
+        cols: 1
+        spacing: 20
+
+        MDGridLayout:     # cabeçalho com Dica, o nome do jogo e Reiniciar, em 3 colunas
+            size_hint: (.1, .1)
+            cols: 3
+            spacing: 20
+            padding: 10
+            orientation: 'lr-tb'
+
+            MDIconButton:
+                id: botaodica
+                on_press: app.dica()
+                icon: 'lightbulb-on'
+                theme_text_color: 'Custom'
+                text_color: app.cores['branco']
+
+            MDLabel:
+                text: 'TERMO'
+                font_name: 'Anton'
+                font_size: 40
+                theme_text_color: 'Custom'
+                text_color: app.cores['branco']
+                halign: 'center'
+
+            MDIconButton:
+                id: voltar
+                on_press: app.reinicia()
+                icon: 'autorenew'
+                theme_text_color: 'Custom'
+                text_color: app.cores['branco']
+
+        AnchorLayout:          # centraliza e depois define 5 colunas pros campos de texto
+            anchor_x: 'center'
+            anchor_y: 'center'
+            size_hint: 1, 0.7
+
+            MDGridLayout:
+                id: casas
+                cols: 5
+                spacing: 5
+                size_hint: None, None
+                size: self.minimum_size
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        MDStackLayout:        # teclado que se agrupa de acordo com o espaço da tela
+            id: teclado
+            size_hint:(1, .55)
+            spacing: 3
+            padding: (15, 10, 15, 10)
